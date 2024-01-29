@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	color: #ffff;
+	background-color: #393843;
+	font-family: "Fugaz One", cursive;
+    position: relative;
+    overflow: hidden;
+}
+
+.palette {
+	position: relative;
+}
+
+.green {
+	width: 100px;
+	height: 100px;
+	background-color: #3ecb74;
+	border-top-left-radius: 100%;
+}
+
+.green:active {
+    cursor: pointer;
+    background-color: lime !important;
+	box-shadow: -10px -10px 12px 0px rgba(0, 255, 0, 0.8);
+}
+
+.red {
+	width: 100px;
+	height: 100px;
+	background-color: #f52e16;
+	border-top-right-radius: 100%;
+}
+
+.red:active {
+    cursor: pointer;
+    background-color: rgb(255, 80, 80) !important;
+	box-shadow: 10px -10px 12px 0px rgba(255, 80, 80, 0.8);
+}
+
+.yellow {
+	width: 100px;
+	height: 100px;
+	background-color: #ece02e;
+	border-bottom-left-radius: 100%;
+}
+
+.yellow:active {
+    cursor: pointer;
+    background-color: rgb(252, 255, 87) !important;
+	box-shadow: -10px 10px 12px 0px rgba(252, 255, 87, 0.8);
+}
+
+.blue {
+	width: 100px;
+	height: 100px;
+	background-color: #38a0eb;
+	border-bottom-right-radius: 100%;
+}
+
+.blue:active{
+    cursor: pointer;
+    background-color: cyan !important;
+	box-shadow: 10px 10px 12px 0px rgba(101, 188, 225, 0.8);
+}
+
+.score {
+	width: 50px;
+	height: 50px;
+	background-color: #393843;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.top {
+	display: flex;
+}
+
+.bottom {
+	display: flex;
+}
+
+.btn {
+	height: 40px;
+	width: 120px;
+	border: none;
+	border-radius: 10px;
+	background-color: #e91e63;
+	color: #ffff;
+	font-family: "Fugaz One", cursive;
+}
+
+.btn:focus {
+    cursor: pointer;
+	outline: none;
+}
+
+.win-msg, .lose-msg {
+    border: none;
+    border-radius: 10px;
+    background-color: #ad1457;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    transform: translateX(80%);
+    transition: transform 1s ease-in;
+}
+
+.hide {
+    transform: translateX(400%);
+}

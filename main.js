@@ -137,7 +137,6 @@ startGame.addEventListener("click", () => {
             paletteContainer.style.pointerEvents = "none";
             return;
         };
-        console.log('clicked', tap)
 
         let color = event.target.classList[0];
     

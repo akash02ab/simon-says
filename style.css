@@ -113,20 +113,22 @@
 }
 
 .win-msg, .lose-msg {
-    border: none;
-    border-radius: 10px;
-    background-color: #ad1457;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 30%;
+	border: none;
+	border-radius: 10px;
+	background-color: #ad1457;
+	height: 50px;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 400px;
 	left: 50%;
 	transform: translate(-50%, -50%);
-    transform: translateX(80%);
-    transition: transform 1s ease-in;
+	transition: transform 1s ease-in;
+	text-align: center;
+	padding: 1rem;
 }
 
 .hide {
-    transform: translateX(400%);
+    transform: translateX(calc(100vw + 100px));
 }

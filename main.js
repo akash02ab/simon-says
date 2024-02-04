@@ -3,12 +3,14 @@ const taps = document.querySelector(".taps");
 const currentScore = document.querySelector(".score");
 const winMessage = document.querySelector(".win-msg");
 const looseMessage = document.querySelector(".lose-msg");
+const paletteContainer = document.querySelector(".palette");
 
 let palette = ["green", "red", "yellow", "blue"];
 let level = 1;
 let tap = 1;
 let score = 0;
 let pattern = [];
+let isPatterGenerating = false;
 
 function glowEffect(element, box) {
 	switch (box) {
@@ -52,15 +54,17 @@ function resetGlowEffect(element, box) {
 	}
 }
 
-function generatePattern() {
-    pattern = [];
+function delay (ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
+async function triggerGlowEffect () {
     for (let times = 1; times <= level; times++) {
         let index = Math.floor(Math.random() * 4);
         let element = document.querySelector("." + palette[index]);
         
         pattern.push(index);
-        
+
         setTimeout(() => {
             glowEffect(element, palette[index]);
         }, 1000 * (times) + 100);
@@ -69,11 +73,21 @@ function generatePattern() {
             resetGlowEffect(element, palette[index]);
         }, 1000 * (times + 1));
     }
-    console.log(pattern);
+
+    await delay(1000 * (level + 1) + 1);
 }
 
-function playThisLevelAgain() {
-    console.log("wrong pattern");
+async function generatePattern () {
+    pattern = [];
+    isPatterGenerating = true;
+    await triggerGlowEffect();
+    isPatterGenerating = false;
+    paletteContainer.style.pointerEvents = "inherit";
+}
+
+function playThisLevelAgain () {
+    // set isPatternGenerating to true
+    isPatterGenerating = true;
     //display lose message
     looseMessage.classList.remove("hide");
 
@@ -89,6 +103,8 @@ function playThisLevelAgain() {
 }
 
 function gotoNextLevel() {
+    // set isPatternGenerating to true
+    isPatterGenerating = true;
     //to display Taps left: 0
     taps.innerText = tap;
     //increase Level
@@ -117,6 +133,12 @@ startGame.addEventListener("click", () => {
     startGame.disabled = true;
 
     document.addEventListener("click", (event) => {
+        if (isPatterGenerating) {
+            paletteContainer.style.pointerEvents = "none";
+            return;
+        };
+        console.log('clicked', tap)
+
         let color = event.target.classList[0];
     
         if(palette.includes(color)) {
